@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitch Auto-Clip Dashboard</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 Twitch Auto-Clip Bot</h1>
+            <div class="status-indicator">
+                <span class="status-dot"></span>
+                <span>Live</span>
+            </div>
+        </header>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">📊</div>
+                <div class="stat-content">
+                    <h3>Total Clips</h3>
+                    <p class="stat-value" id="totalClips">0</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">✅</div>
+                <div class="stat-content">
+                    <h3>Successful Clips</h3>
+                    <p class="stat-value" id="successfulClips">0</p>
+                    <span class="stat-subtitle" id="successRate">0%</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">👁️</div>
+                <div class="stat-content">
+                    <h3>Total Views</h3>
+                    <p class="stat-value" id="totalViews">0</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">⭐</div>
+                <div class="stat-content">
+                    <h3>Avg Score</h3>
+                    <p class="stat-value" id="avgScore">0.00</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="charts-grid">
+            <div class="chart-card">
+                <h2>📈 Daily Trends (30 Days)</h2>
+                <canvas id="dailyTrendsChart"></canvas>
+            </div>
+
+            <div class="chart-card">
+                <h2>🎯 Trigger Effectiveness</h2>
+                <canvas id="triggerEffectivenessChart"></canvas>
+            </div>
+        </div>
+
+        <div class="charts-grid">
+            <div class="chart-card">
+                <h2>🔗 Signal Correlation</h2>
+                <canvas id="correlationChart"></canvas>
+            </div>
+
+            <div class="chart-card">
+                <h2>🕐 Hourly Distribution</h2>
+                <canvas id="hourlyChart"></canvas>
+            </div>
+        </div>
+
+        <div class="table-section">
+            <h2>🎬 Recent Clips</h2>
+            <div class="table-container">
+                <table id="recentClipsTable">
+                    <thead>
+                        <tr>
+                            <th>Clip ID</th>
+                            <th>Score</th>
+                            <th>Views</th>
+                            <th>Created</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recentClipsBody">
+                        <tr>
+                            <td colspan="5" class="loading">Loading...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="table-section">
+            <h2>📡 Recent Signals</h2>
+            <div class="table-container">
+                <table id="signalsTable">
+                    <thead>
+                        <tr>
+                            <th>Timestamp</th>
+                            <th>Chat</th>
+                            <th>Audio</th>
+                            <th>Motion</th>
+                            <th>Score</th>
+                            <th>Clip</th>
+                        </tr>
+                    </thead>
+                    <tbody id="signalsBody">
+                        <tr>
+                            <td colspan="6" class="loading">Loading...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/dashboard.js"></script>
+</body>
+</html>
