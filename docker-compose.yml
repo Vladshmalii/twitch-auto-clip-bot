@@ -6,7 +6,7 @@ services:
     container_name: twitch_postgres
     environment:
       POSTGRES_USER: twitch_user
-      POSTGRES_PASSWORD: secure_password_2025
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change_me}
       POSTGRES_DB: twitch_clips
     volumes:
       - postgres_data:/var/lib/postgresql/data
@@ -26,7 +26,7 @@ services:
       postgres:
         condition: service_healthy
     environment:
-      DATABASE_URL: postgresql://twitch_user:secure_password_2025@postgres:5432/twitch_clips
+      DATABASE_URL: postgresql://twitch_user:${POSTGRES_PASSWORD:-change_me}@postgres:5432/twitch_clips
     env_file:
       - .env
     ports:
